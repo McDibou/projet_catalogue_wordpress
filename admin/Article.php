@@ -1,0 +1,71 @@
+<?php
+
+class Article
+{
+
+    public static function register()
+    {
+        add_filter('manage_post_posts_columns', [self::class, 'add']);
+        add_filter('manage_post_posts_custom_column', [self::class, 'render'], 10, 2);
+        add_filter('register_post_type_args', [self::class, 'replace_icon'], 20, 2);
+    }
+
+    public static function replace_icon($args, $type)
+    {
+        if ($type === 'post') {
+            $args['menu_icon'] = 'dashicons-tag';
+        }
+        return $args;
+    }
+
+    public static function add($columns)
+    {
+        $newColumns = [];
+
+        foreach ($columns as $key => $value) {
+
+            unset($newColumns['tags']);
+            unset($newColumns['author']);
+
+            if ($key === 'title') {
+                $newColumns['galleries'] = 'Gallery';
+            }
+
+            if ($key === 'categories') {
+                $newColumns['price'] = 'Prix';
+                $newColumns['promo'] = 'Promotion';
+                $newColumns['date_start_promo'] = 'Date de debut';
+                $newColumns['date_end_promo'] = 'Date de fin';
+            }
+
+            $newColumns[$key] = $value;
+        }
+
+        return $newColumns;
+    }
+
+    public static function render($column, $post_id)
+    {
+        if ($column === 'galleries') {
+            $image = wp_get_attachment_image_src(get_post_meta($post_id, 'vdw_gallery_id', true)[0]);
+            echo '<img class="image-preview" src="' . $image[0] . '">';
+        }
+
+        if ($column === 'price') {
+            echo get_post_meta($post_id, PriceArticle::META_KEY, true);
+        }
+
+        if ($column === 'promo') {
+            echo get_post_meta($post_id, PromotionArticle::PROMOTION, true);
+        }
+
+        if ($column === 'date_start_promo') {
+            echo get_post_meta($post_id, PromotionArticle::DATE_START_PROMO, true);
+        }
+
+        if ($column === 'date_end_promo') {
+            echo get_post_meta($post_id, PromotionArticle::DATE_END_PROMO, true);
+        }
+    }
+
+}
