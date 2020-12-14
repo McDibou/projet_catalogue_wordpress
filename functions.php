@@ -3,8 +3,10 @@
 require_once 'metaboxes' . DIRECTORY_SEPARATOR . 'PriceArticle.php';
 require_once 'metaboxes' . DIRECTORY_SEPARATOR . 'PromotionArticle.php';
 require_once 'metaboxes' . DIRECTORY_SEPARATOR . 'GaleryArticle.php';
+require_once 'metaboxes' . DIRECTORY_SEPARATOR . 'addressShops.php';
 
 require_once 'admin' . DIRECTORY_SEPARATOR . 'Article.php';
+require_once 'admin' . DIRECTORY_SEPARATOR . 'Shops.php';
 
 // appel des support natif de wordpress
 function catalogue_supports()
@@ -28,11 +30,14 @@ function catalogue_register_assets()
 add_action('after_setup_theme', 'catalogue_supports');
 add_action('wp_enqueue_scripts', 'catalogue_register_assets');
 
-// add columns admin article
+// add and mopdify post
 Article::register();
+Shops::register();
 
 // add metabox admin article
 PriceArticle::register();
 PromotionArticle::register();
 GaleryArticle::register();
 
+// add metabox admin shps
+addressShops::register();
