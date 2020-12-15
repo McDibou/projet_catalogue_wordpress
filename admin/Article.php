@@ -8,6 +8,7 @@ class Article
         add_filter('manage_post_posts_columns', [self::class, 'add']);
         add_filter('manage_post_posts_custom_column', [self::class, 'render'], 10, 2);
         add_filter('register_post_type_args', [self::class, 'replace_icon'], 20, 2);
+        add_action('init', [self::class, 'unregister_taxonomy']);
     }
 
     public static function replace_icon($args, $type)
@@ -16,6 +17,11 @@ class Article
             $args['menu_icon'] = 'dashicons-tag';
         }
         return $args;
+    }
+
+    public static function unregister_taxonomy()
+    {
+        unregister_taxonomy_for_object_type('post_tag', 'post');
     }
 
     public static function add($columns)
@@ -27,11 +33,14 @@ class Article
             unset($newColumns['tags']);
             unset($newColumns['author']);
 
+
             if ($key === 'title') {
-                $newColumns['galleries'] = 'Gallery';
+                $newColumns['galleries'] = 'Image';
+
             }
 
             if ($key === 'categories') {
+                $newColumns['title'] = 'Produit';
                 $newColumns['price'] = 'Prix';
                 $newColumns['promo'] = 'Promotion';
                 $newColumns['date_start_promo'] = 'Date de debut';
