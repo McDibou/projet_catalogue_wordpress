@@ -47,6 +47,10 @@ class Article
                 $newColumns['date_end_promo'] = 'Date de fin';
             }
 
+            if ($key === 'comments') {
+                $newColumns['highlight'] = 'Mise en avant';
+            }
+
             $newColumns[$key] = $value;
         }
 
@@ -74,6 +78,14 @@ class Article
 
         if ($column === 'date_end_promo') {
             echo get_post_meta($post_id, PromotionArticle::DATE_END_PROMO, true);
+        }
+
+        if ($column === 'highlight') {
+            if (!empty(get_post_meta($post_id, HighlightArticle::HIGHLIGHT, true))) {
+                echo 'yes';
+            } else {
+                echo 'no';
+            }
         }
     }
 

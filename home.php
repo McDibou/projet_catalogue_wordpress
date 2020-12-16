@@ -1,16 +1,7 @@
 <!--PAGE CATALOGUE-->
 <?php get_header() ?>
 
-<?php $categories = get_terms('category'); ?>
-<ul>
-    <?php foreach ($categories as $category): ?>
-        <?php $link = get_term_link($category->slug, 'category'); ?>
-        <li>
-            <a href="<?= $link ?>"><?= $category->name ?></a>
-        </li>
-    <?php endforeach; ?>
-</ul>
-
+<?= get_search_form() ?>
 
 <?php if (have_posts()) : ?>
     <div>
