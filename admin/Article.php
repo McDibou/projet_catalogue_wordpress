@@ -48,7 +48,7 @@ class Article
             }
 
             if ($key === 'comments') {
-                $newColumns['highlight'] = 'Mise en avant';
+                $newColumns['highlight_article'] = 'Mise en avant';
             }
 
             $newColumns[$key] = $value;
@@ -80,7 +80,7 @@ class Article
             echo get_post_meta($post_id, PromotionArticle::DATE_END_PROMO, true);
         }
 
-        if ($column === 'highlight') {
+        if ($column === 'highlight_article') {
             if (!empty(get_post_meta($post_id, HighlightArticle::HIGHLIGHT, true))) {
                 echo 'yes';
             } else {

@@ -4,8 +4,6 @@
 class GaleryArticle
 {
 
-    const META_KEY = 'catalogue_gallery_article';
-
     public static function register()
     {
         add_action('add_meta_boxes', [self::class, 'add']);
