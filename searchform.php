@@ -13,5 +13,7 @@
     <input name="min" type="range" min="0" max="2000" value="<?= $_GET['min'] ?>">
     <input name="max" type="range" min="0" max="2000" value="<?= $_GET['max'] ?>">
 
+    <input type="hidden" value="1" name="page">
+
     <button type="submit">search</button>
 </form>
