@@ -1,10 +1,11 @@
 <!--PAGE CATALOGUE-->
 <?php get_header() ?>
 
-<?= get_search_form() ?>
+<div class="search"><?= get_search_form() ?></div>
 
+<img class="cat-img-home" src="<?php the_post_thumbnail_url(); ?>" alt="">
 <?php if (have_posts()) : ?>
-    <div>
+    <div class="cat-blog">
         <?php while (have_posts()): the_post() ?>
             <div>
                 <?php get_template_part('parts/card.article', 'post'); ?>
@@ -12,10 +13,10 @@
         <?php endwhile; ?>
     </div>
 
-    <?= paginate_links() ?>
+    <div class="pagination"><?= paginate_links() ?></div>
 
 <?php else : ?>
-    <h1>Pas d'articles</h1>
+    <h1 class="message-catalog">NOT FOUND !</h1>
 <?php endif; ?>
 
 <?php get_footer() ?>

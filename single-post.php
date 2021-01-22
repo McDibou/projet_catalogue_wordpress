@@ -1,14 +1,13 @@
 <?php get_header() ?>
 
-    <h5><?php the_title() ?></h5>
+    <div class="single-post">
+        <?php get_template_part('parts/card.article', 'post'); ?>
+    </div>
 
-<?php $ids = get_post_meta(get_the_ID(), 'vdw_gallery_id', true); ?>
-<?php foreach ($ids as $values) : $image = wp_get_attachment_image_src($values, 'small'); ?>
-    <img class="image-preview" src="<?php echo $image[0]; ?>" alt="">
-<?php endforeach ?>
-
-    <em><?php the_terms(get_the_ID(), 'category') ?></em>
-    <p><?php the_content(); ?></p>
-
+    <div class="comment-block">
+        <?php if (comments_open() || get_comments_number()):
+            comments_template();
+        endif; ?>
+    </div>
 
 <?php get_footer() ?>

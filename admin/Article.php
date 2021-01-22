@@ -61,7 +61,7 @@ class Article
     {
         if ($column === 'galleries') {
             $image = wp_get_attachment_image_src(get_post_meta($post_id, 'vdw_gallery_id', true)[0]);
-            echo '<img class="image-preview" src="' . $image[0] . '">';
+            echo '<img style="width: 60px" class="image-preview" src="' . $image[0] . '">';
         }
 
         if ($column === 'price') {
@@ -70,6 +70,7 @@ class Article
 
         if ($column === 'promo') {
             echo get_post_meta($post_id, PromotionArticle::PROMOTION, true);
+            echo !empty(get_post_meta($post_id, PromotionArticle::PROMOTION, true)) ? ' %': '';
         }
 
         if ($column === 'date_start_promo') {
@@ -82,9 +83,9 @@ class Article
 
         if ($column === 'highlight_article') {
             if (!empty(get_post_meta($post_id, HighlightArticle::HIGHLIGHT, true))) {
-                echo 'yes';
+                echo '<p class="cat-yes-promo">YES</p>';
             } else {
-                echo 'no';
+                echo '<p class="cat-no-promo">NO</p>';
             }
         }
     }

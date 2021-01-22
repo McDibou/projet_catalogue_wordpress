@@ -9,5 +9,11 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 mymap.setView([50.84827657517526, 4.352726141533356], 12);
 
 for (let i = 0; i < data.length; i++) {
-    L.marker([data[i].latitude, data[i].longitude]).addTo(mymap).bindPopup(`BONJOUR`);
+    L.marker([data[i].latitude, data[i].longitude]).addTo(mymap).bindPopup(`test`).on('click', function () {
+        mymap.panTo(this.getLatLng())
+    });
+}
+
+function toGoPosition(element) {
+    mymap.panTo([parseFloat(element.children.latitude_shop.value), parseFloat(element.children.longitude_shop.value)])
 }

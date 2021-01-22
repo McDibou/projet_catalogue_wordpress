@@ -1,0 +1,59 @@
+.cat-pad {
+    padding: 16px;
+}
+
+.cat-pad-bot {
+    padding-bottom: 10px;
+}
+
+.cat-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-width {
+    width: 40%;
+}
+
+.cat-yes-promo {
+    color: #00c600 !important;
+    font-weight: bold;
+}
+
+.cat-no-promo {
+    color: #a50000 !important;
+    font-weight: bold;
+}
+
+.input-widget {
+    display: block;
+    width: 100%;
+    padding: 5px 8px !important;
+    border-radius: 2px !important;
+    border: 1px solid #757575 !important;
+    font-size: 13px;
+}
+
+.label-widget {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.read-social-widget {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.time-catalogue {
+    width: 30%;
+}
+
+.block-hours {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: .2rem;
+}

@@ -1,7 +1,537 @@
 /*
-Theme Name: Theme Catalogue
+Theme Name: Projet Catalogue  Wordpress
+Description:    It is a theme that experiments with the wordpress back-end.
+Author:         De Laet A.
+Author URI:     https://github.com/McDibou/projet_catalogue_wordpress
+Version:        1.0
+Tags:           catalog, light
+Text Domain:    catalog
  */
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
+    background: #d2d2d2;
+}
+
+.cat-intro-home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 75%;
+    height: 60vh;
+    align-items: flex-end;
+    margin: 0 auto;
+}
+
+.cat-intro-home figure > img {
+    filter: drop-shadow(5px 5px 15px #4c4c4c);
+    height: 20%;
+    width: auto;
+    margin-top: 100px;
+}
+
+.cat-intro-home blockquote {
+    color: #000000;
+    font-size: 1.2rem;
+    font-style: italic;
+    text-shadow: 2px 2px 5px #4e4e4e;
+    padding-left: 25%;
+}
+
+.menu-menu-header-container {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 5%;
+    z-index: 10;
+}
+
+.menu-menu-header-container ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-menu-header-container li {
+    margin-left: 2px;
+}
+
+.menu a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-family: Tahoma, sans-serif;
+    font-weight: 700;
+    padding: 10px 20px;
+    text-shadow: 0.1em 0.1em 0.3em #3b3b3b;
+}
+
+.menu a {
+    border: none;
+    position: relative;
+}
+
+.menu a:hover {
+    border: none;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 5px;
+    left: 50%;
+    bottom: 0;
+    border-radius: 0.5rem;
+    background-color: white;
+    filter: drop-shadow(0 0 5px #3b3b3b);
+}
+
+.menu a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+
+.card {
+    position: relative;
+    background-color: #ffffff;
+    color: #222222;
+    display: flex;
+    width: 450px;
+    height: 400px;
+    box-shadow: 0 0 10px 2px #a2a2a2;
+    z-index: 100;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 1rem;
+
+}
+
+.card img {
+    position: absolute;
+    overflow: hidden;
+    z-index: -1;
+    left: 53%;
+}
+
+.card h3 {
+    position: absolute;
+    align-items: baseline;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    top: 4rem;
+    left: 1.6rem;
+    display: flex;
+    transform: translateZ(30px);
+}
+
+.card .category a {
+    position: absolute;
+    top: 5.8rem;
+    right: 17rem;
+    font-style: italic;
+    transform: translateZ(20px);
+    text-decoration: none;
+    color: black;
+}
+
+.card .desc {
+    position: absolute;
+    top: 8.5rem;
+    left: 3.5rem;
+}
+
+#promo {
+    color: #ffffff;
+    font-family: Tahoma, sans-serif;
+    border-radius: 0.2rem;
+    padding: 0.35rem;
+    background-color: #8d1313;
+    position: absolute;
+    font-weight: bold;
+    top: 14.7rem;
+    right: 20rem;
+    font-size: 1.1rem;
+    width: 20%;
+    text-align: center;
+    transform: rotate(-10deg);
+}
+
+
+.card .link-pay a {
+    position: absolute;
+    text-transform: uppercase;
+    text-decoration: none;
+    top: 20.5rem;
+    left: 3.5rem;
+    font-weight: 900;
+    color: white;
+    padding: 0.7rem .9rem .6rem .9rem;
+    border-radius: 0.3rem;
+    background: #aeaeae;
+    box-shadow: 0 0 0.3rem 0.1rem #cdcdcd;
+}
+
+.card .prix {
+    position: absolute;
+    top: 255px;
+    left: 85px;
+    font-size: xx-large;
+    font-weight: bold;
+    z-index: 10;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1.5%;
+
+}
+
+footer .hours {
+    border: 1px;
+    font-family: monospace;
+    background: #ffffff;
+    width: 16rem;
+    color: #000000;
+    padding: 10px 15px;
+    border-radius: 9px;
+    box-shadow: 0 0 0.3rem 0.1rem #b8b8b8;
+    margin-right: 20px;
+}
+
+footer .line {
+    margin-left: 10px;
+}
+
+footer .social a {
+    background: #ffffff;
+    border-radius: .5rem;
+    padding: .5rem 1.1rem;
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #000000;
+    width: 10rem;
+    box-shadow: 0 0 0.3rem 0.1rem #ababab;
+    text-transform: uppercase;
+    font-family: Tahoma, sans-serif;
+}
+
+.cat-about {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.text-about {
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0 10px 2px #a2a2a2;
+    padding: 3rem;
+    width: 20%;
+    height: 30rem;
+    border-radius: 0.5rem;
+    overflow: auto;
+    text-align: justify;
+    margin: 3rem;
+}
+
+.text-about::-webkit-scrollbar {
+    width: 10px;
+}
+
+.text-about::-webkit-scrollbar-thumb {
+    background: #888888;
+    border-radius: 0.5rem;
+}
+
+.img-about {
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 0.5rem;
+    height: auto;
+    box-shadow: 0 0 10px 2px #a2a2a2;
+}
+
+.cat-blog {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 9% auto 5%;
+    width: 70%;
+}
+
+.search {
+    position: absolute;
+    top: 13rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0 10px 2px #a2a2a2;
+    padding: 15px 25px;
+    border-radius: .5rem;
+}
+
+.search select, .search button {
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    cursor: pointer;
+    color: #5a5a5a;
+    background: white;
     border: 1px solid black;
+    margin: 0 10px;
+}
+
+input[name="min"], input[name="max"] {
+    appearance: none;
+    overflow: hidden;
+    outline: none;
+    pointer-events: none;
+    background: linear-gradient(#d0d0d0, #d0d0d0) no-repeat center;
+    background-size: 100% 0.3rem;
+    width: 10rem;
+    margin: 0 10px;
+    top: 5px;
+    position: relative;
+}
+
+input[name="min"]::-webkit-slider-thumb, input[name="max"]::-webkit-slider-thumb {
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 0.2rem;
+    background-color: #929292;
+    position: relative;
+    cursor: pointer;
+    appearance: none;
+    pointer-events: all;
+}
+
+.pagination {
+    font-weight: 700;
+    margin: 0 auto;
+    bottom: 5.5rem;
+    width: 30%;
+    text-align: center;
+}
+
+.page-numbers, .next, .prev {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: .2rem;
+    background: white;
+    text-decoration: none;
+    color: black;
+    font-family: Cambria, sans-serif;
+}
+
+.current {
+    background: #919191;
+    color: #ffffff;
+}
+
+.menu-categ {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    width: 50%;
+    margin: 40px auto;
+}
+
+.menu-categ ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-categ a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-family: Tahoma, sans-serif;
+    font-weight: 700;
+    padding: 10px 20px;
+    background: #6d6d6d;
+    margin: 2px;
+    border-radius: .2rem;
+    box-shadow: 0 0 10px 2px #a2a2a2;
+}
+
+.menu-categ a:hover {
+    color: #000000;
+    box-shadow: 0 0 10px 2px #a2a2a2;
+    background: #ffffff;
+}
+
+.name-categ {
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+    position: relative;
+    top: 75px;
+}
+
+.message-catalog {
+    text-align: center;
+    color: #000000;
+    font-size: 3rem;
+    margin: 20%;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.form-contact {
+    width: 30%;
+    font-family: Tahoma, sans-serif;
+    margin-right: 5%;
+    box-shadow: 0 0 10px 2px #a2a2a2;
+    background: #ffffff;
+    padding: 2%;
+    border-radius: .5rem;
+}
+
+.form-contact form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form-contact div {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0.5rem;
+}
+
+.form-contact label {
+    margin: 0;
+    padding: 0.3rem;
+}
+
+.form-contact input, .form-contact textarea {
+    padding: 0.3rem;
+    border: none;
+    border-bottom: 1px solid grey;
+    resize: none;
+    margin: 0 1rem;
+    font-family: monospace;
+}
+
+.form-contact button {
+    margin: 0.5rem auto;
+    padding: 0.2rem;
+    width: 60%;
+    border: 1px solid grey;
+    border-radius: 0.3rem;
+    transition: all .1s;
+    z-index: 1;
+}
+
+.map-shops {
+    display: flex;
+    margin: 2% 25%;
+    justify-content: flex-end;
+}
+
+.shops {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 0.3rem;
+    font-family: Tahoma, sans-serif;
+    transform: scale(0.8);
+    box-shadow: 0 0 10px 2px #a2a2a2;
+    border: 1px solid white !important;
+}
+
+.name {
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+.ville {
+    text-align: end;
+    display: block;
+    font-size: 1rem;
+}
+
+.single-post {
+    margin-top: 7%;
+}
+
+.comment-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3%;
+    margin: 5% auto;
+    background: #eaeaea;
+    width: 60%;
+    font-family: monospace;
+}
+
+.commentlist {
+    margin: 5% 0;
+}
+
+.comment {
+    list-style: none;
+    margin: 1% 5%;
+
+}
+
+.comment-body {
+    background: #d2d2d2;
+    padding: 3%;
+    margin: 0;
+    border-radius: .5rem;
+}
+
+.comment-form-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2%;
+}
+
+.form-submit input {
+    margin: 0.5rem auto;
+    padding: 0.2rem;
+    width: 40%;
+    border: 1px solid grey;
+    box-shadow: 0 0 10px 2px #a2a2a2;
+    border-radius: 0.3rem;
+    transition: all .1s;
+    z-index: 1;
+}
+
+.map {
+    border-radius: .5rem;
+    box-shadow: 0 0 10px 2px #a2a2a2;
 }

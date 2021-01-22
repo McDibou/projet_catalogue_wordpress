@@ -1,9 +1,7 @@
 <!--AUTRE PAGE-->
 <?php get_header() ?>
 
-<img src="<?php the_post_thumbnail_url(); ?>" style="width: 20%" alt="">
-
-<h1><?php the_title(); ?></h1>
-<p><?php the_content(); ?></p>
+<img class="cat-img-home" src="<?php the_post_thumbnail_url(); ?>" alt="">
+<div class="cat-about"><?php the_content(); ?></div>
 
 <?php get_footer() ?>

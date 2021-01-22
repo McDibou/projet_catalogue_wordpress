@@ -67,8 +67,6 @@ class Shops
     }
 
     public static function addColumns($columns) {
-//        var_dump($columns);
-//        die();
         $newColumns = [];
 
         foreach ($columns as $key => $value) {

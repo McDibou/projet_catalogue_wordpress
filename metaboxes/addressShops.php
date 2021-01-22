@@ -2,6 +2,12 @@
 
 class addressShops
 {
+    const STREET = 'street_shop';
+    const NUM = 'number_shop';
+    const ZIP = 'zip_shop';
+    const LAT = 'latitude_shop';
+    const LONG = 'longitude_shop';
+    const NONCE = 'catalogue_adress_nonce';
 
     public static function register()
     {
@@ -16,38 +22,49 @@ class addressShops
 
     public static function render($post)
     {
-        $street = get_post_meta($post->ID, 'street_shop', true);
-        $number = get_post_meta($post->ID, 'number_shop', true);
-        $zip = get_post_meta($post->ID, 'zip_shop', true);
-        $latitude = get_post_meta($post->ID, 'latitude_shop', true);
-        $longitude = get_post_meta($post->ID, 'longitude_shop', true);
-
+        $street = get_post_meta($post->ID, self::STREET, true);
+        $number = get_post_meta($post->ID, self::NUM, true);
+        $zip = get_post_meta($post->ID, self::ZIP, true);
+        $latitude = get_post_meta($post->ID, self::LAT, true);
+        $longitude = get_post_meta($post->ID, self::LONG, true);
+        wp_nonce_field(self::NONCE, self::NONCE)
         ?>
-        <label for="street">Rue</label>
-        <input name="street_shop" value="<?= $street ?>" type="text" id="street">
-
-        <label for="number">Numéro</label>
-        <input name="number_shop" value="<?= $number ?>" type="text" id="number">
-
-        <label for="zip">Code postal</label>
-        <input name="zip_shop" value="<?= $zip ?>" type="text" id="zip">
-
-        <label for="latitude">Latitude</label>
-        <input name="latitude_shop" value="<?= $latitude ?>" type="text" id="latitude">
-
-        <label for="longitude">Longitude</label>
-        <input name="longitude_shop" value="<?= $longitude ?>" type="text" id="longitude">
+        <div class="cat-pad cat-flex">
+            <label class="cat-pad-bot" for="street">Rue :</label>
+            <input class="cat-width" name="<?= self::STREET ?>" value="<?= $street ?>" type="text"
+                   id="street">
+        </div>
+        <div class="cat-pad cat-flex">
+            <label class="cat-pad-bot"  for="number">Numéro :</label>
+            <input class="cat-width" name="<?= self::NUM ?>" value="<?= $number ?>" type="text"
+                   id="number">
+        </div>
+        <div class="cat-pad cat-flex">
+            <label class="cat-pad-bot" for="zip">Code postal :</label>
+            <input class="cat-width" name="<?= self::ZIP ?>" value="<?= $zip ?>" type="text"
+                   id="zip">
+        </div>
+        <div class="cat-pad cat-flex">
+            <label class="cat-pad-bot" for="latitude">Latitude :</label>
+            <input class="cat-width" name="<?= self::LAT ?>" value="<?= $latitude ?>" type="text"
+                   id="latitude">
+        </div>
+        <div class="cat-pad cat-flex">
+            <label class="cat-pad-bot" for="longitude">Longitude :</label>
+            <input class="cat-width" name="<?= self::LONG ?>" value="<?= $longitude ?>" type="text"
+                   id="longitude">
+        </div>
         <?php
     }
 
     public static function save($post_id)
     {
-        if (array_key_exists('street_shop', $_POST)) {
-            update_post_meta($post_id, 'street_shop', $_POST['street_shop']);
-            update_post_meta($post_id, 'number_shop', $_POST['number_shop']);
-            update_post_meta($post_id, 'zip_shop', $_POST['zip_shop']);
-            update_post_meta($post_id, 'latitude_shop', $_POST['latitude_shop']);
-            update_post_meta($post_id, 'longitude_shop', $_POST['longitude_shop']);
+        if (array_key_exists(self::STREET, $_POST) && wp_verify_nonce($_POST[self::NONCE], self::NONCE)) {
+            update_post_meta($post_id, self::STREET, $_POST[self::STREET]);
+            update_post_meta($post_id, self::NUM, $_POST[self::NUM]);
+            update_post_meta($post_id, self::ZIP, $_POST[self::ZIP]);
+            update_post_meta($post_id, self::LAT, $_POST[self::LAT]);
+            update_post_meta($post_id, self::LONG, $_POST[self::LONG]);
         }
     }
 
